@@ -32,10 +32,8 @@ RUN if [ "$COIN" != "" ]; then sed -i s/"POA"/"${COIN}"/g apps/block_scout_web/p
 RUN mix compile
 
 # Add blockscout npm deps
-RUN cd apps/block_scout_web/assets/ && \
-    npm install && \
-    npm run deploy && \
-    cd -
+RUN cd apps/block_scout_web/assets/ && npm install
+RUN cd apps/block_scout_web/assets/ && npm run deploy
 
 RUN cd apps/explorer/ && \
     npm install && \
